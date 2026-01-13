@@ -2,7 +2,7 @@ import * as React from "react";
 import { graphql, useStaticQuery } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
-import Layout from "../components/layout";
+import Layout from "../components/Layout";
 import * as styles from "../styles/index.module.css";
 
 const IndexPage = () => {
