@@ -1,0 +1,55 @@
+.wrapper {
+  padding: 18px 0 40px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.title {
+  margin: 0 0 18px;
+  font-size: 40px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.imageWrap {
+  max-width: 420px;
+  margin: 0 auto 18px;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+}
+
+.text {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.8;
+  opacity: 0.85;
+  white-space: pre-line;
+}
+
+@media (max-width: 900px) {
+  .title {
+    font-size: 34px;
+  }
+}
+
+@media (max-width: 600px) {
+  .wrapper {
+    padding: 12px 0 32px;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+
+  .text {
+    font-size: 16px;
+  }
+
+  .imageWrap {
+    max-width: 280px;
+  }
+}
