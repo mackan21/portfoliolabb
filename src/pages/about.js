@@ -14,7 +14,11 @@ const AboutPage = () => {
           description
         }
         image {
-          gatsbyImageData(width: 1200, placeholder: BLURRED)
+          gatsbyImageData(
+            width: 1200
+            placeholder: BLURRED
+            formats: [AUTO, WEBP, AVIF]
+          )
         }
       }
     }
@@ -44,6 +48,14 @@ const AboutPage = () => {
   );
 };
 
-export const Head = () => <title>About</title>;
+export const Head = () => (
+  <>
+    <title>About</title>
+    <meta
+      name="description"
+      content="Learn more about me, my background and my experience in web development and frontend technologies."
+    />
+  </>
+);
 
 export default AboutPage;

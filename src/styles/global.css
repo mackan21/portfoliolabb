@@ -7,3 +7,16 @@
 body {
   font-family: "Poppins", sans-serif;
 }
+
+/* Behåll scroll men dölj scrollbar */
+html,
+body {
+  overflow: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE / gamla Edge */
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}

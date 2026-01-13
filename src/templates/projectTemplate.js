@@ -45,12 +45,28 @@ export const query = graphql`
         longdescription
       }
       image {
-        gatsbyImageData(width: 1600, placeholder: BLURRED)
+        gatsbyImageData(
+          width: 1200
+          placeholder: BLURRED
+          formats: [AUTO, WEBP, AVIF]
+        )
       }
     }
   }
 `;
 
-export const Head = ({ data }) => <title>{data.contentfulProject.title}</title>;
+export const Head = ({ data }) => {
+  const project = data.contentfulProject;
+
+  return (
+    <>
+      <title>{project.title}</title>
+      <meta
+        name="description"
+        content={project.longdescription?.longdescription.slice(0, 160)}
+      />
+    </>
+  );
+};
 
 export default ProjectTemplate;

@@ -68,13 +68,25 @@ export const query = graphql`
           description
         }
         image {
-          gatsbyImageData(width: 1200, placeholder: BLURRED)
+          gatsbyImageData(
+            width: 1200
+            placeholder: BLURRED
+            formats: [AUTO, WEBP, AVIF]
+          )
         }
       }
     }
   }
 `;
 
-export const Head = () => <title>Projects</title>;
+export const Head = () => (
+  <>
+    <title>Projects</title>
+    <meta
+      name="description"
+      content="A selection of projects including web development, frontend solutions and CMS-driven websites."
+    />
+  </>
+);
 
 export default ProjectsPage;

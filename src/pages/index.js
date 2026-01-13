@@ -13,7 +13,11 @@ const IndexPage = () => {
         name
         work
         heroImage {
-          gatsbyImageData(width: 800, placeholder: BLURRED)
+          gatsbyImageData(
+            width: 1200
+            placeholder: BLURRED
+            formats: [AUTO, WEBP, AVIF]
+          )
         }
       }
     }
@@ -47,6 +51,14 @@ const IndexPage = () => {
   );
 };
 
-export const Head = () => <title>Home</title>;
+export const Head = () => (
+  <>
+    <title>Home</title>
+    <meta
+      name="description"
+      content="Personal portfolio showcasing projects built with Gatsby, Contentful and modern web technologies."
+    />
+  </>
+);
 
 export default IndexPage;
