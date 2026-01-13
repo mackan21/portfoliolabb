@@ -1,8 +1,9 @@
 import * as React from "react";
-import { graphql, Link } from "gatsby";
+import { graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 import Layout from "../components/Layout";
+import * as styles from "../styles/projectTemplate.module.css";
 
 const ProjectTemplate = ({ data }) => {
   const project = data.contentfulProject;
@@ -10,15 +11,27 @@ const ProjectTemplate = ({ data }) => {
 
   return (
     <Layout>
-      <p>
-        <Link to="/projects">← Back to projects</Link>
-      </p>
+      <div className={styles.wrapper}>
+        <header className={styles.header}>
+          <h1 className={styles.title}>{project.title}</h1>
+        </header>
 
-      <h1>{project.title}</h1>
+        {image && (
+          <div className={styles.imageWrap}>
+            <GatsbyImage
+              image={image}
+              alt={project.title}
+              className={styles.image}
+            />
+          </div>
+        )}
 
-      {image && <GatsbyImage image={image} alt={project.title} />}
-
-      <p>{project.longdescription?.longdescription}</p>
+        <section className={styles.content}>
+          <p className={styles.longText}>
+            {project.longdescription?.longdescription}
+          </p>
+        </section>
+      </div>
     </Layout>
   );
 };
@@ -32,7 +45,7 @@ export const query = graphql`
         longdescription
       }
       image {
-        gatsbyImageData(width: 1200, placeholder: BLURRED)
+        gatsbyImageData(width: 1600, placeholder: BLURRED)
       }
     }
   }

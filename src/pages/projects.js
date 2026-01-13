@@ -3,33 +3,56 @@ import { graphql, Link } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 import Layout from "../components/Layout";
+import * as styles from "../styles/projects.module.css";
 
 const ProjectsPage = ({ data }) => {
   const projects = data.allContentfulProject.nodes;
 
   return (
     <Layout>
-      <h1>Projects</h1>
+      <div className={styles.list}>
+        {projects.map((project, index) => {
+          const image = getImage(project.image);
+          const isReversed = index % 2 === 1;
 
-      {projects.map((project) => {
-        const image = getImage(project.image);
+          return (
+            <article
+              key={project.slug}
+              className={`${styles.item} ${isReversed ? styles.reversed : ""}`}
+            >
+              <div className={styles.text}>
+                <h2 className={styles.title}>
+                  <Link
+                    to={`/projects/${project.slug}`}
+                    className={styles.titleLink}
+                  >
+                    {project.title}
+                  </Link>
+                </h2>
 
-        return (
-          <article key={project.slug}>
-            <h2>{project.title}</h2>
+                <p className={styles.description}>
+                  {project.description?.description}
+                </p>
+              </div>
 
-            {image && <GatsbyImage image={image} alt={project.title} />}
-
-            <p>{project.description?.description}</p>
-
-            <p>
-              <Link to={`/projects/${project.slug}`}>Open project</Link>
-            </p>
-
-            <hr />
-          </article>
-        );
-      })}
+              <div className={styles.media}>
+                {image && (
+                  <Link
+                    to={`/projects/${project.slug}`}
+                    className={styles.imageLink}
+                  >
+                    <GatsbyImage
+                      image={image}
+                      alt={project.title}
+                      className={styles.image}
+                    />
+                  </Link>
+                )}
+              </div>
+            </article>
+          );
+        })}
+      </div>
     </Layout>
   );
 };
@@ -45,7 +68,7 @@ export const query = graphql`
           description
         }
         image {
-          gatsbyImageData(width: 900, placeholder: BLURRED)
+          gatsbyImageData(width: 1200, placeholder: BLURRED)
         }
       }
     }
